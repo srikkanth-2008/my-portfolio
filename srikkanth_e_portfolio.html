@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal e-portfolio of Srikkanth, first-year Computer Science and Engineering student at R.M.D. Engineering College.">
+  <title>Srikkanth | E-Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #131b30;
+      --panel2: #18233d;
+      --text: #edf2ff;
+      --muted: #aab6d0;
+      --accent: #72e0c1;
+      --accent2: #83a7ff;
+      --line: rgba(255,255,255,.10);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at 80% 0%, #1b2a4a 0, var(--bg) 42%);
+      color: var(--text); line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1080px, 90%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(11,16,32,.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: .5px; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 22px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { min-height: 590px; display: grid; grid-template-columns: 1.35fr .8fr; align-items: center; gap: 50px; padding: 80px 0; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: .78rem; font-weight: 700; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.2rem); line-height: 1.05; margin: 16px 0; letter-spacing: -2px; }
+    h1 span { color: var(--accent); }
+    .hero p { max-width: 610px; color: var(--muted); font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn { display: inline-block; padding: 12px 20px; border-radius: 9px; font-weight: 700; border: 1px solid var(--accent); }
+    .btn.primary { background: var(--accent); color: #08151b; }
+    .btn.secondary { color: var(--accent); }
+    .profile-card {
+      background: linear-gradient(145deg, var(--panel2), var(--panel));
+      border: 1px solid var(--line); border-radius: 24px; padding: 34px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.25); text-align: center;
+    }
+    .avatar {
+      width: 150px; height: 150px; margin: 0 auto 22px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 3.4rem; font-weight: 800;
+      color: #08151b; background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border: 7px solid rgba(255,255,255,.08);
+    }
+    .profile-card h2 { font-size: 1.45rem; }
+    .profile-card p { color: var(--muted); font-size: .95rem; margin-top: 5px; }
+    section { padding: 78px 0; }
+    .section-heading { margin-bottom: 28px; }
+    .section-heading h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-top: 7px; }
+    .section-heading p { color: var(--muted); max-width: 680px; margin-top: 8px; }
+    .about-grid, .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .card { background: rgba(19,27,48,.88); border: 1px solid var(--line); border-radius: 17px; padding: 26px; }
+    .card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+    .card p, .card li { color: var(--muted); }
+    .details { list-style: none; }
+    .details li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .details strong { color: var(--text); display: inline-block; min-width: 105px; }
+    .project-card { grid-column: 1 / -1; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .tag { color: var(--accent); background: rgba(114,224,193,.09); border: 1px solid rgba(114,224,193,.24); border-radius: 30px; padding: 6px 12px; font-size: .82rem; }
+    .timeline { border-left: 2px solid var(--accent); padding-left: 22px; }
+    .timeline h3 { margin-bottom: 5px; }
+    .timeline p { color: var(--muted); }
+    .contact-card { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0; text-align: center; color: var(--muted); font-size: .88rem; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 65px 0; gap: 35px; }
+      .profile-card { max-width: 390px; }
+      .about-grid, .project-grid { grid-template-columns: 1fr; }
+      .project-card { grid-column: auto; }
+      nav { padding: 15px 0; align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 14px; }
+      section { padding: 58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">S<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#goals">Goals</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">Hello, welcome to my portfolio</div>
+        <h1>I'm <span>Srikkanth</span></h1>
+        <p>
+          A first-year Computer Science and Engineering student at R.M.D. Engineering College.
+          I am beginning my journey in technology, building my knowledge and exploring how
+          computing can solve real-world problems.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View my project</a>
+          <a class="btn secondary" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <aside class="profile-card">
+        <div class="avatar" aria-label="Initial S">S</div>
+        <h2>Srikkanth</h2>
+        <p>First-Year CSE Student</p>
+        <p>R.M.D. Engineering College</p>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2>About Me</h2>
+          <p>I am a student interested in learning computer science concepts and applying them through practical projects.</p>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Who I Am</h3>
+            <p>
+              My name is Srikkanth. I am pursuing Computer Science and Engineering in my
+              first year at R.M.D. Engineering College. I enjoy learning new things,
+              improving my technical knowledge and developing ideas into projects.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Quick Details</h3>
+            <ul class="details">
+              <li><strong>Name</strong> Srikkanth</li>
+              <li><strong>College</strong> R.M.D. Engineering College</li>
+              <li><strong>Department</strong> Computer Science and Engineering</li>
+              <li><strong>Year</strong> First Year</li>
+              <li><strong>Focus</strong> Technology and project-based learning</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">My learning journey</div>
+          <h2>Education</h2>
+        </div>
+        <div class="card timeline">
+          <h3>Bachelor of Engineering — Computer Science and Engineering</h3>
+          <p>R.M.D. Engineering College</p>
+          <p>Currently studying · First Year</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">What I am working on</div>
+          <h2>Project</h2>
+          <p>A project that introduces the importance of monitoring cloud usage and identifying unusual cost patterns.</p>
+        </div>
+        <div class="project-grid">
+          <article class="card project-card">
+            <h3>Intelligent Cloud Cost Anomaly Detection</h3>
+            <p>
+              This project focuses on identifying unusual changes in cloud spending.
+              Cloud costs can increase unexpectedly when resources are overused,
+              misconfigured or left running. An anomaly-detection approach can help
+              highlight unusual spending patterns so that users can investigate them
+              earlier and manage their cloud budgets more effectively.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Cloud Computing</span>
+              <span class="tag">Cost Monitoring</span>
+              <span class="tag">Anomaly Detection</span>
+              <span class="tag">Intelligent Systems</span>
+            </div>
+            <p style="margin-top:18px;font-size:.9rem;">
+              <strong style="color:var(--text);">My project note:</strong>
+              Add your exact tools, technologies, features and your contribution here
+              so the description matches what you have implemented.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Looking ahead</div>
+          <h2>My Goals</h2>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>Learn</h3>
+            <p>Build strong fundamentals in programming, computer science and modern technologies.</p>
+          </article>
+          <article class="card">
+            <h3>Build</h3>
+            <p>Work on practical projects, improve problem-solving skills and gain experience by creating useful applications.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="card contact-card">
+          <div>
+            <div class="eyebrow">Let's connect</div>
+            <h2>Contact Me</h2>
+            <p style="color:var(--muted);margin-top:6px;">Interested in learning and collaborating? Feel free to get in touch.</p>
+            <p style="color:var(--muted);margin-top:12px;">Email: <strong style="color:var(--text);">Add your email address</strong></p>
+            <p style="color:var(--muted);">LinkedIn / GitHub: <strong style="color:var(--text);">Add your profile links</strong></p>
+          </div>
+          <a class="btn primary" href="mailto:your-email@example.com">Email me</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Srikkanth · Personal E-Portfolio</div>
+  </footer>
+</body>
+</html>
